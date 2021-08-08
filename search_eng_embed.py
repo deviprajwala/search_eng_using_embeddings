@@ -19,7 +19,7 @@ def read_embeddings():
         for line in f:
             values = line.split()
             word = values[0]
-            vector = np.asarray(values[1:5], "float32")
+            vector = np.asarray(values[1:], "float32")
             embeddings_dict[word] = vector
 
     #print(embeddings_dict.keys())
@@ -60,6 +60,7 @@ def vectorise():
         for words in dicti[i]:
             avg += sum(embeddings_dict[words])
         #print(avg, i)
+    
         doc_average.update({i:avg})
         avg = 0
        
