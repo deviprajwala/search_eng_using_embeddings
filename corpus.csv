@@ -1,0 +1,23 @@
+documents ,term1 
+document01,the
+document02,rat
+document03,rat
+document04,cat
+document05,cat
+document06,king
+document07,ruler
+document08,monarch
+document09,emperor
+document10,king
+
+documents ,term1 ,term2 ,term3 ,term4 ,term5 
+document01,the,cat,ran,and,sat
+document02,rat,ran,away,from,cat
+document03,rat,sat,on,the,table
+document04,cat,caught,the,rat,easily
+document05,cat,rat,are,best,friends
+document06,king,belong,to,royal,family
+document07,ruler,belong,to,royal,family
+document08,monarch,belong,to,royal,family
+document09,emperor,belong,to,royal,family
+document10,king,lives,in,the,palace
