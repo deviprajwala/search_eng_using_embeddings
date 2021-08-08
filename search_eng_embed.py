@@ -9,9 +9,12 @@ dicti = {}
 #dictionary to store the name of the document and the terms present in it as a vector
 dummy_list = []
 #list for performing some operations and clearing them
+embeddings_dict = {}
+
+doc_average ={}
 
 def read_embeddings():
-    embeddings_dict = {}
+    
     with open("glove.6B.50d.txt", 'r') as f:
         for line in f:
             values = line.split()
@@ -50,7 +53,23 @@ def filter( documents, rows, cols ):
         dummy_list.clear()
         #clearing the dummy list
 
-    print(dicti)
+    #print(dicti)
+def vectorise():
+    avg = 0
+    for i in dicti:
+        for words in dicti[i]:
+            avg += sum(embeddings_dict[words])
+        #print(avg, i)
+        doc_average.update({i:avg})
+        avg = 0
+       
+
+def get_embedding(query):
+    weight = 0
+    for word in query:
+        weight += sum(embeddings_dict[word])
+
+    return weight
 
 if __name__=="__main__":
     
@@ -68,5 +87,21 @@ if __name__=="__main__":
     #function call to read and separate the name of the documents and the terms present in it to a separate list  from the data frame and also create a dictionary which 
     #has the name of the document as key and the terms present in it as the list of strings  which is the value of the key
 
-    #print("hi")
     read_embeddings()
+
+    vectorise()
+
+    print("Enter the query")
+    query = input()
+    #to get the query input from the user, the below input is given for obtaining the output as in output.txt file
+    #one three three
+
+    query=query.split(' ')
+    #spliting the query as a list of strings
+    
+    query_weight = get_embedding(query)
+    print(query_weight)
+    li = []
+    print(doc_average)
+    '''for i in doc_average:
+        print(doc_average[i]-query_weight)'''
