@@ -1,0 +1,5 @@
+Enter the query
+The set of similar words are:
+['beautiful', 'beauty', 'wonderful', 'lovely', 'charming', 'gorgeous']
+The set of relevant documents are:
+['document01', 'document03', 'document04', 'document06', 'document07', 'document10']

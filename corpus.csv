@@ -1,12 +1,12 @@
-documents ,term1 
-document01,beautiful
-document02,delicious
-document03,wonderful
-document04,lovely
-document05,tasty
-document06,gorgeous
-document07,beauty
-document08,flavorful
-document09,savory
-document10,charming
-documeent11,delectable
+documents ,term1,term2,term3 
+document01,beautiful,dance,dress
+document02,delicious,food,juice
+document03,wonderful,performance,attire
+document04,lovely,flower,color
+document05,tasty,fruit,vegetable
+document06,gorgeous,lady,girl
+document07,beauty,women,pretty
+document08,flavorful,chocolate,cheesecake
+document09,savory,jelly,candy
+document10,charming,face,look
+documeent11,delectable,snack,fries
