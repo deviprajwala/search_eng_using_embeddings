@@ -198,7 +198,7 @@ if __name__=="__main__":
 
     print("Enter the query")
     query = input()
-    #to get the query input from the user, the below input is given for obtaining the output as in output.txt file
+    #to get the query input from the user, the below input is given for obtaining the output as in output.txt file.
     
 
     query=query.split(' ')
