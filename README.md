@@ -6,10 +6,10 @@ display those documents for the given query.In this way we retrieve the document
 The repositary consists of the program for the search engine named search_eng_embed.py which contains the code for the search engine.The code is written in python. It also contains a 
 csv file named corpus.csv which contains the name of the documents and the index terms present in them.We have two text files input.txt and output.txt which contains the input which is 
 given to the program and the output which is redirected to a file.The output file contains the similar words corresponding to the query and a list of relevant documents.We have used the 
-embeddings for words from a pre trained model from the website:https://nlp.stanford.edu/projects/glove/
+embeddings for words from a pre trained model from the website:https://nlp.stanford.edu/projects/glove/ ,it contains a 50 dimensional embeddings for around 400000 words.
 
 The embeddings are obtained from the glove algorithm , glove stands for global vectors. Glove is an unsupervised learning algorithm for obtaining vector representations for words. 
-Training is performed on aggregated global word-word co-occurrence statistics from a corpus
+Training is performed on aggregated global word-word co-occurrence statistics from a corpus.
 
 Initially we import the basic packages like numpy, pandas and math for performing the basic operations.Then we read the data from the csv file as a dataframe, determine the number of 
 rows and columns.Later read and separate the name of the documents and the terms present in it to a separate list  from the data frame and also create a dictionary which has the name of 
