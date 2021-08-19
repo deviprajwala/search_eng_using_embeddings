@@ -7,7 +7,8 @@ sentences = [['chocolate','like','I'],
 
 terms = []
 #list to store the index terms present in the corpus
-
+#N
+#number of samples
 sort_terms = []
 dicti = {}
 dicti_mean = {}
@@ -23,9 +24,11 @@ def index_terms():
                 num += 1
                 terms.append(word)
 
+    N = len(terms)
     
-    print(terms)
-    print(dicti)
+    return N
+    #print(terms)
+    #print(dicti)
 
 #generating the co-occurrence matrix for the sentences
 def co_occurrence_matrix():
@@ -69,9 +72,28 @@ def compute_mean():
         dicti_mean[dicti[num]] = avg
         num += 1
 
-    print(dicti_mean)
+    #print(dicti_mean)
+
+def covariance( ind_1 , ind_2, N ):
+    #print(co_occur[ind_1],co_occur[ind_2])
+
+    ans = 0
+    
+    
+    mean_1 = dicti_mean[dicti[ind_1]]
+    mean_2 = dicti_mean[dicti[ind_2]]
+
+    for i in range(len(co_occur[ind_1])):
+        print(co_occur[ind_1][i],co_occur[ind_2][i],mean_1,mean_2)
+        ans += ( (co_occur[ind_1][i] - mean_1) * (co_occur[ind_2][i] - mean_2) )
+        
+    print(ans,N,"\n")
+    ans = ans/ (N-1)
+    return ans
+
 if __name__=="__main__":
     
-    index_terms()
+    N = index_terms()
     co_occurrence_matrix()
     compute_mean()
+    print ( covariance( 0,0,N ) )
