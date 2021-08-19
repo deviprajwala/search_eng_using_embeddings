@@ -10,7 +10,7 @@ terms = []
 
 sort_terms = []
 dicti = {}
-
+dicti_mean = {}
 co_occur = []
 #list to store the elements of co occurrence matrix
 
@@ -36,26 +36,14 @@ def co_occurrence_matrix():
     for i in range(len(terms)):
         for j in range(len(terms)):
             count = context_count(dicti[i],dicti[j])
-                '''for lis in sentences:
+            
+            context.append(count)
+        
+        copy_lis = context.copy()        
+        co_occur.append(copy_lis)
+        context.clear()
 
-                    index = lis.index(dicti[i])
-                    print (dicti[i],index,i,j,len(terms),"\n")
-                    if( index+1 < len(terms) ):
-                        if( lis[index+1] == dicti[j] ):
-                            print( dicti[j] )
-                        
-                        
-                        if( lis[index+1] == dicti[j] ):
-                            context += 1
-                        
-                    if( index-1 >= 0 and lis[index-1] == dicti[j] ):
-                        context += 1
-                        print(dicti[index])
-
-                    context = 0'''
-
-
-        print("\n")
+    print(co_occur)
 
 def context_count(word1,word2):
     #print(word1,word2)
@@ -69,13 +57,21 @@ def context_count(word1,word2):
             if ( ind+1 < len(lis) and lis[ind+1] == word2):
                 count += 1
                 print(word1,word2)
-            if ( ind-1 >= 0 ) and lis[ind-1] == word2):
+            if ( ind-1 >= 0  and lis[ind-1] == word2):
                 count += 1
 
     return count
 
+def compute_mean():
+    num = 0
+    for col in co_occur:
+        avg = sum(col) / len(col)
+        dicti_mean[dicti[num]] = avg
+        num += 1
 
+    print(dicti_mean)
 if __name__=="__main__":
     
     index_terms()
     co_occurrence_matrix()
+    compute_mean()
