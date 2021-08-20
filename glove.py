@@ -13,6 +13,7 @@ sort_terms = []
 dicti = {}
 dicti_mean = {}
 co_occur = []
+covariance_matrix = []
 #list to store the elements of co occurrence matrix
 
 def index_terms():
@@ -59,7 +60,6 @@ def context_count(word1,word2):
             ind = lis.index(word1)
             if ( ind+1 < len(lis) and lis[ind+1] == word2):
                 count += 1
-                print(word1,word2)
             if ( ind-1 >= 0  and lis[ind-1] == word2):
                 count += 1
 
@@ -84,16 +84,28 @@ def covariance( ind_1 , ind_2, N ):
     mean_2 = dicti_mean[dicti[ind_2]]
 
     for i in range(len(co_occur[ind_1])):
-        print(co_occur[ind_1][i],co_occur[ind_2][i],mean_1,mean_2)
         ans += ( (co_occur[ind_1][i] - mean_1) * (co_occur[ind_2][i] - mean_2) )
         
-    print(ans,N,"\n")
+        
     ans = ans/ (N-1)
     return ans
+
+def covari_matrix(N):
+    dummy = []
+    cov = []
+    for i in range(N):
+        for j in range(N):
+            ans = covariance( i,j,N )
+            cov.append(ans)
+        dummy = cov.copy()
+        covariance_matrix.append(dummy)
+        cov.clear()
+    print (covariance_matrix )
 
 if __name__=="__main__":
     
     N = index_terms()
     co_occurrence_matrix()
     compute_mean()
-    print ( covariance( 0,0,N ) )
+    covari_matrix(N)
+    
