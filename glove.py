@@ -14,6 +14,7 @@ dicti = {}
 dicti_mean = {}
 co_occur = []
 covariance_matrix = []
+embedding = []
 #list to store the elements of co occurrence matrix
 
 def index_terms():
@@ -113,34 +114,33 @@ def principle_component(E_vector):
 
     matrix_2 = []
     lis = []
+    embed = []
     #len(co_occur)
-    for i in range (0,1):
+    for i in range (len(co_occur)):
+        num = 0
         for j in range (len(co_occur)):
-            ans = co_occur[j][i] - dicti_mean [dicti[j]]
+            for k in range (len(co_occur)):
+                ans = co_occur[k][j] - dicti_mean [dicti[k]]
 
-            lis.append(ans)
-            #dummy = lis.copy()
-            #matrix_2.append(lis)
-            '''print(lis)
-            for k in range(len(co_occur)):
-                print(k,lis)
-                matrix_2[k] = lis
+                lis.append(ans)
 
-            del lis[0]'''
-           
+            matrix_2 = np.array(lis)
+            #matrix_2 = matrix_2.transpose()
+            matrix_1 = E_vector[i]
 
+            #print(matrix_1,matrix_2)
 
-        matrix_2 = np.array(lis)
-        #matrix_2 = matrix_2.transpose()
-        matrix_1 = E_vector[i]
-
-        print(matrix_1,matrix_2)
-
-        result = np.dot(matrix_1,matrix_2.transpose())
-
-        
-        print(result)
-
+            result = np.dot(matrix_1,matrix_2.transpose())
+            #print(result)
+            embed.append(  result)
+            dummy = embed.copy()
+            lis.clear()
+        embedding.append(dummy)
+        embed.clear()
+        #print(embed)
+    print(embedding)
+    for i in embedding:
+        print(i,"\n")
 if __name__=="__main__":
     
     N = index_terms()
