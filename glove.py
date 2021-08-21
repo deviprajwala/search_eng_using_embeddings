@@ -102,10 +102,52 @@ def covari_matrix(N):
         cov.clear()
     print (covariance_matrix )
 
+def compute_eigen():
+    a = np.array(covariance_matrix)
+    E_value,E_vector=eig(a)
+
+    return E_vector
+
+def principle_component(E_vector):
+    print(dicti,dicti_mean,co_occur)
+
+    matrix_2 = []
+    lis = []
+    #len(co_occur)
+    for i in range (0,1):
+        for j in range (len(co_occur)):
+            ans = co_occur[j][i] - dicti_mean [dicti[j]]
+
+            lis.append(ans)
+            #dummy = lis.copy()
+            #matrix_2.append(lis)
+            '''print(lis)
+            for k in range(len(co_occur)):
+                print(k,lis)
+                matrix_2[k] = lis
+
+            del lis[0]'''
+           
+
+
+        matrix_2 = np.array(lis)
+        #matrix_2 = matrix_2.transpose()
+        matrix_1 = E_vector[i]
+
+        print(matrix_1,matrix_2)
+
+        result = np.dot(matrix_1,matrix_2.transpose())
+
+        
+        print(result)
+
 if __name__=="__main__":
     
     N = index_terms()
     co_occurrence_matrix()
     compute_mean()
     covari_matrix(N)
+    E_vector = compute_eigen()
+    #print(E_vector)
+    principle_component(E_vector)
     
