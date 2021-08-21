@@ -1,5 +1,6 @@
 import numpy as np
 from numpy.linalg import eig
+import math
 
 sentences = [['chocolate','like','I'],
 			['I','like','toffee']]
@@ -15,6 +16,7 @@ dicti_mean = {}
 co_occur = []
 covariance_matrix = []
 embedding = []
+similar_words = []
 #list to store the elements of co occurrence matrix
 
 def index_terms():
@@ -48,7 +50,7 @@ def co_occurrence_matrix():
         co_occur.append(copy_lis)
         context.clear()
 
-    print(co_occur)
+    #print(co_occur)
 
 def context_count(word1,word2):
     #print(word1,word2)
@@ -101,7 +103,7 @@ def covari_matrix(N):
         dummy = cov.copy()
         covariance_matrix.append(dummy)
         cov.clear()
-    print (covariance_matrix )
+    #print (covariance_matrix )
 
 def compute_eigen():
     a = np.array(covariance_matrix)
@@ -110,7 +112,6 @@ def compute_eigen():
     return E_vector
 
 def principle_component(E_vector):
-    print(dicti,dicti_mean,co_occur)
 
     matrix_2 = []
     lis = []
@@ -137,10 +138,46 @@ def principle_component(E_vector):
             lis.clear()
         embedding.append(dummy)
         embed.clear()
-        #print(embed)
-    print(embedding)
-    for i in embedding:
-        print(i,"\n")
+
+def find_similar(word):
+    #print(embedding) 
+    #print(dicti)
+    numerator = 0
+    denomi1 = 0
+    denomi2 = 0
+
+    val_list = list(dicti.values())
+
+    pos = val_list.index(word)
+    #print(pos)
+
+    for i in range(len(embedding)):
+        for j in range(len(embedding)):
+            #print(embedding[i][pos])
+            #print(embedding[i][3])
+
+            #print(pos,j," ",i,j)
+            #print(embedding[j][pos], embedding[j][i],"\n")
+           
+            numerator += embedding[j][pos] * embedding[j][i]
+            denomi1 += embedding[j][pos] * embedding[j][pos]
+            denomi2 += embedding[j][i] * embedding[j][i]
+            #print(numerator ,embedding[j][pos],embedding[j][i])
+
+        denominator = math.sqrt(denomi1) * math.sqrt(denomi2)
+        simili = numerator/denominator
+        print("\n",numerator, denominator, simili,"\n")
+        numerator = 0
+        denomi1 = 0
+        denomi2 = 0
+       
+        if(simili >= 0.8):
+            similar_words.append(i)
+
+    print(similar_words)
+
+
+
 if __name__=="__main__":
     
     N = index_terms()
@@ -148,6 +185,6 @@ if __name__=="__main__":
     compute_mean()
     covari_matrix(N)
     E_vector = compute_eigen()
-    #print(E_vector)
     principle_component(E_vector)
+    find_similar('chocolate')
     
