@@ -32,7 +32,7 @@ https://dylancastillo.co/nlp-snippets-cluster-documents-using-word2vec/
 
 
 
-#glove algorithm for generating embeddings
+# glove algorithm for generating embeddings
 
 We obtain the set of similar words based on thier context.This algorithm is implemented and present in the file named glove.py in this repositary.The code is written in python.
 
