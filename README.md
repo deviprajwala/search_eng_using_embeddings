@@ -39,7 +39,7 @@ We obtain the set of similar words based on thier context.This algorithm is impl
 Initially we compute the co occurence matrix for which we calculate covariance for each of the ordered pair , from which we generate the covariance matrix. After getting the covariance 
 matrix we obtain the eigen vector later by making use of it we compute the priciple components.We append all these to form the embeddings matrix.
 
-Once we get the embeddings we compute the similar words by comparing the similarity measure calculated based on the cosine similarity between the embeddings of the words.
+Once we get the embeddings we compute the similar words by comparing the similarity measure calculated based on the cosine similarity between the embeddings of the words
 
 Refrences:
 https://www.solver.com/principal-components
