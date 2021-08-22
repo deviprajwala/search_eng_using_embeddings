@@ -29,3 +29,22 @@ https://nlp.stanford.edu/projects/glove/
 https://towardsdatascience.com/light-on-math-ml-intuitive-guide-to-understanding-glove-embeddings-b13b4f19c010
 https://medium.com/analytics-vidhya/basics-of-using-pre-trained-glove-vectors-in-python-d38905f356db
 https://dylancastillo.co/nlp-snippets-cluster-documents-using-word2vec/
+
+
+
+#glove algorithm for generating embeddings
+
+We obtain the set of similar words based on thier context.This algorithm is implemented and present in the file named glove.py in this repositary.The code is written in python.
+
+Initially we compute the co occurence matrix for which we calculate covariance for each of the ordered pair , from which we generate the covariance matrix. After getting the covariance 
+matrix we obtain the eigen vector later by making use of it we compute the priciple components.We append all these to form the embeddings matrix.
+
+Once we get the embeddings we compute the similar words by comparing the similarity measure calculated based on the cosine similarity between the embeddings of the words.
+
+Refrences:
+https://www.solver.com/principal-components
+https://builtin.com/data-science/step-step-explanation-principal-component-analysis
+https://medium.com/data-science-group-iitr/word-embedding-2d05d270b285
+https://datamahadev.com/stanfords-glove-implementation-using-python/
+https://www.youtube.com/watch?v=8rXD5-xhemo&list=PLoROMvodv4rOhcuXMZkNm7j3fVwBBY42z
+https://www.youtube.com/watch?v=MLaJbA82nzk
